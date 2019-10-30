@@ -1,0 +1,36 @@
+{% macro navbar(active_nav_item) %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('render_home') }}">
+            Wines
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="entityNav">
+            <ul class="navbar-nav d-flex mx-auto">
+                <li class="nav-item {{ 'active' if active_nav_item=='dashboard-link'}}" id="dashboard-link">
+                    <a class="nav-link" href="{{ url_for('render_dashboard_list') }}">Dashboards</a>
+                </li>
+                <li class="nav-item {{ 'active' if active_nav_item=='wine-link' }}" id="document-link">
+                    <a class="nav-link" href="{{ url_for('render_wine_list') }}">Wines</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="usernameNav">
+            <ul class="navbar-nav d-flex mx-auto">
+                <li class="nav-item">
+          <span class="navbar-text">
+            <i class="fas fa-user"></i>&nbsp; {{ current_user.name }}
+          </span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">
+                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i>&nbsp;Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endmacro %}
+
+{{ navbar() }}

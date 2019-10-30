@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    {{ super() }}
+    <table class="table table-striped">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for dashboard in dashboards %}
+            <tr>
+                <td>{{ dashboard.id }}</td>
+                <td><a href="{{ dashboard.prefix }}">{{ dashboard.name }}</a></td>
+                <td>{{ dashboard.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

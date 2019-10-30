@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    {{ super() }}
+    <table class="table table-striped">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Alcohol %</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for wine in wines %}
+            <tr>
+                <td>{{ wine.id }}</td>
+                <td><a href="{{ url_for('render_wine_entry', wine_id=wine.id) }}">{{ wine.name }}</a></td>
+                <td>{{ wine.alcohol }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
